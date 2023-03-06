@@ -28,14 +28,12 @@ const checkWin = ()=>{
             document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won"
             isgameover = true
             document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "200px";
-            document.querySelector(".line").style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
-            document.querySelector(".line").style.width = "20vw";
+            music.play()
         }
     })
 }
 
 // Game Logic
-// music.play()
 let boxes = document.getElementsByClassName("box");
 Array.from(boxes).forEach(element =>{
     let boxtext = element.querySelector('.boxtext');
@@ -47,7 +45,7 @@ Array.from(boxes).forEach(element =>{
             checkWin();
             if (!isgameover){
                 document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
-            } 
+            }
         }
     })
 })
@@ -60,7 +58,7 @@ reset.addEventListener('click', ()=>{
     });
     turn = "X"; 
     isgameover = false
-    document.querySelector(".line").style.width = "0vw";
     document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
     document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "0px"
+    music.pause()
 })
